@@ -34,12 +34,21 @@ const basketSlice = createSlice({
             };
         },
         removeTicket(state, action) {
+            let removeIndex = -1;
+
             let check = state.basket.map((t, i) => {
                 if (t.id === action.payload.id) {
                     t.tickets -= 1;
+                    if (t.tickets === 0) {
+                        removeIndex = i;
+                    };
                 };
                 return t;
             });
+
+            if (removeIndex !== -1) {
+                state.basket = state.basket.filter((t, i) => i !== removeIndex);
+            };
         },
         removeAll(state, action) {
             let removeIndex = -1;

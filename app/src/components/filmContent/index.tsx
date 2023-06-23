@@ -4,10 +4,17 @@ import styles from './styles.module.css';
 import Comment from './comment';
 import noPhoto from "../../assets/images/noPhoto.png";
 import spinner from "../../assets/images/spinner.png";
+import Counter from '../filmsContent/preview/counter';
+import { useAppSelector } from '@/hooks/useSelector';
+import { RootState } from '@/redux/store';
+import { addTicket, decrement, increment, removeTicket } from '@/redux/basket-page/basketSlice';
+import { useAppDispatch } from '@/hooks/useDispatch';
 
 export default function FilmContent(props) {
     const [movieData, setMovieData] = useState(0);
     const [comments, setComments] = useState();
+    const dispatch = useAppDispatch();
+    const ticketsCount = useAppSelector((state: RootState) => state.basketPage.ticketsCount);
 
     useEffect(() => {
         fetch(`http://localhost:3001/api/movie?movieId=${props.id}`).then((data) => data.json()).then((data) => {
@@ -17,6 +24,32 @@ export default function FilmContent(props) {
             setComments(data);
         })
     }, [])
+
+    const removeTicketsHandler = () => {
+        if (ticketsCount > 0) {
+            dispatch(decrement());
+            dispatch(removeTicket({
+                id: props.id,
+                name: movieData.title,
+                genre: movieData.genre,
+                poster: movieData.posterUrl,
+                tickets: 1
+            }));
+        };
+    };
+
+    const addTicketsHandler = () => {
+        if (ticketsCount < 30) {
+            dispatch(increment());
+            dispatch(addTicket({
+                id: props.id,
+                name: movieData.title,
+                genre: movieData.genre,
+                poster: movieData.posterUrl,
+                tickets: 1
+            }));
+        };
+    };
 
     if (movieData === 0) {
         return <div className={styles.spinner}>
@@ -33,7 +66,12 @@ export default function FilmContent(props) {
                         alt={`poster for film ${movieData.title}`} />
                 </div>
                 <div className={styles.info}>
-                    <h1 className={styles.name}>{movieData.title}</h1>
+                    <div className={styles.title}>
+                        <h1 className={styles.name}>{movieData.title}</h1>
+                        <Counter ticketsCount={ticketsCount}
+                            removeTicketsHandler={removeTicketsHandler}
+                            addTicketsHandler={addTicketsHandler} />
+                    </div>
                     <div className={styles.genre}><b>Жанр:</b> {movieData.genre}</div>
                     <div className={styles.year}><b>Год выпуска:</b> {movieData.releaseYear}</div>
                     <div className={styles.rating}><b>Рейтинг:</b> {movieData.rating}</div>

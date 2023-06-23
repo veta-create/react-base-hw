@@ -12,6 +12,7 @@ import Link from 'next/link';
 import Modal from '@/components/modal';
 import { useAppSelector } from '@/hooks/useSelector';
 import { RootState } from '@/redux/store';
+import Counter from './counter';
 
 interface PreviewPropsTypes {
     id: string,
@@ -27,9 +28,9 @@ export default function Preview(props: PreviewPropsTypes) {
     const [modalIsOpen, setModalIsOpen] = useState(false);
     const basket = useAppSelector((state: RootState) => state.basketPage.basket);
 
-    const removeTicketsHandler = () => {
+    const removeTicketsHandler = (isBasket: boolean) => {
         let currentTickets = basket.find(t => t.id === props.id)?.tickets;
-        if (currentTickets === 1) {
+        if (currentTickets === 1 && isBasket) {
             setModalIsOpen(true);
         } else {
             if (props.ticketsCount > 0) {
@@ -43,7 +44,6 @@ export default function Preview(props: PreviewPropsTypes) {
                 }));
             };
         }
-        // console.log(currentTickets)
     };
 
     const addTicketsHandler = () => {
@@ -80,24 +80,9 @@ export default function Preview(props: PreviewPropsTypes) {
                     <p className={styles.genre}>{props.filmGenre}</p>
                 </div>
 
-                <div className={styles.ticketsCounter}>
-                    <div onClick={removeTicketsHandler}
-                        className={styles.minus}>
-                        <Image src={props.ticketsCount > 0 ? activeMinus : inactiveMinus}
-                            width={20}
-                            height={20}
-                            alt="minus" />
-                    </div>
-                    <div className={styles.ticketsCount}>{props.ticketsCount}</div>
-                    <div
-                        onClick={addTicketsHandler}
-                        className={styles.plus}>
-                        <Image src={props.ticketsCount < 30 ? activePlus : inactivePlus}
-                            width={20}
-                            height={20}
-                            alt="plus" />
-                    </div>
-                </div>
+                <Counter removeTicketsHandler={() => removeTicketsHandler(true)}
+                    addTicketsHandler={addTicketsHandler}
+                    ticketsCount={props.ticketsCount} />
 
                 <div onClick={() => setModalIsOpen(true)} className={styles.close}>
                     <Image src={close}
@@ -119,21 +104,10 @@ export default function Preview(props: PreviewPropsTypes) {
                     <p className={styles.genre}>{props.filmGenre}</p>
                 </div>
 
-                <div className={styles.ticketsCounter}>
-                    <div onClick={removeTicketsHandler} className={styles.minus}>
-                        <Image src={props.ticketsCount > 0 ? activeMinus : inactiveMinus}
-                            width={20}
-                            height={20}
-                            alt="minus" />
-                    </div>
-                    <div className={styles.ticketsCount}>{props.ticketsCount}</div>
-                    <div onClick={addTicketsHandler} className={styles.plus}>
-                        <Image src={props.ticketsCount < 30 ? activePlus : inactivePlus}
-                            width={20}
-                            height={20}
-                            alt="plus" />
-                    </div>
-                </div>
+                <Counter removeTicketsHandler={() => removeTicketsHandler(false)}
+                    addTicketsHandler={addTicketsHandler}
+                    ticketsCount={props.ticketsCount} />
+
             </div>
         )
     };
