@@ -7,44 +7,36 @@
     display: grid;
     grid-template-columns: 432px 1fr;
     padding: 24px;
-    margin: 0;
-    overflow-y: auto;
-    
-    background-color: #FFFFFF;
+
+    background-color: var(--second-bg-color);
     border-radius: 8px;
 }
 
 .filmInfo .info {
-    color: #1B1F23;
+    color: var(--primary-color);
 }
 
 .filmInfo .info .name {
-    margin: 0;
     font-size: 32px;
-    font-family: "Roboto";
     font-weight: 600;
     line-height: 32px;
 }
 
-.genre, .year, .rating, .producer, .description, .description .text {
+.genre,
+.year,
+.rating,
+.producer,
+.description,
+.description .text {
     padding-top: 16px;
-    margin: 0;
     font-size: 24px;
-    font-family: "Roboto";
     line-height: 24px;
 }
 
 .genre {
     padding-top: 24px;
-    margin: 0;
 }
 
 .description {
     padding-top: 32px;
-    margin: 0;
-}
-
-@font-face {
-    font-family: "Roboto";
-    src: url("../fonts/Roboto/RobotoFlex-VariableFont_GRAD\,XTRA\,YOPQ\,YTAS\,YTDE\,YTFI\,YTLC\,YTUC\,opsz\,slnt\,wdth\,wght.ttf") format("truetype");
 }

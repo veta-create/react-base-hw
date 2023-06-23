@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import styles from './styles.module.css';
 import Comment from './comment';
-import noPhoto from "../assets/images/noPhoto.png";
+import noPhoto from "../../assets/images/noPhoto.png";
 
 export default function FilmContent(props) {
     return (

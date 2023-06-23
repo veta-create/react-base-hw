@@ -1,7 +1,6 @@
 .accardion {
     min-height: calc(100vh - 84px - 86px);
     padding: 24px 32px;
-    font-family: "Roboto";
 
     color: #1B1F23;
     background-color: #F5F5F5;
@@ -36,9 +35,4 @@
 
 .item .icon {
     cursor: pointer;
-}
-
-@font-face {
-    font-family: "Roboto";
-    src: url("../fonts/Roboto/RobotoFlex-VariableFont_GRAD\,XTRA\,YOPQ\,YTAS\,YTDE\,YTFI\,YTLC\,YTUC\,opsz\,slnt\,wdth\,wght.ttf") format("truetype");
 }

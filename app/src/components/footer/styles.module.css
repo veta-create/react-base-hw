@@ -17,13 +17,12 @@
 .qa,
 .aboutUs {
     font-size: 20px;
-    font-family: "Roboto";
     font-style: normal;
     font-weight: 400;
     font-size: 20px;
     line-height: 23px;
 
-    color: #FFFFFF;
+    color: var(--second-bg-color);
 }
 
 .qa {
@@ -32,9 +31,4 @@
 
 .aboutUs {
     padding-right: 32px;
-}
-
-@font-face {
-    font-family: "Roboto";
-    src: url("../fonts/Roboto/RobotoFlex-VariableFont_GRAD\,XTRA\,YOPQ\,YTAS\,YTDE\,YTFI\,YTLC\,YTUC\,opsz\,slnt\,wdth\,wght.ttf") format("truetype");
 }

@@ -1,7 +1,7 @@
 import React, { useCallback, useContext, useState } from "react";
 import styles from "./styles.module.css";
-import open from "../assets/images/arrow-open.svg";
-import close from "../assets/images/arrow-close.svg";
+import open from "../../assets/images/arrow-open.svg";
+import close from "../../assets/images/arrow-close.svg";
 import Image from "next/image";
 
 const MenuContext = React.createContext(false);
@@ -61,7 +61,7 @@ export default function QA() {
                 <MenuAccordion.Item isTitle={false} title={"Билет на сеанс можно приобрести на главной странице сайта. Для этого нужно использовать кнопку '+' в верхнем правом углу карточки фильма. Еще одиин вариант - перейти на страницу фильма и использовать кнопку там."} />
             </MenuAccordion.Group>
             <MenuAccordion.Group title={"Как оставить отзыв на Билетопоиск?"}>
-                <MenuAccordion.Item isTitle={false} title={"Нужно перейти на страницу фильма, щелкнув по превью, внизу страницы есть специальное поле для комментариев."} />
+                <MenuAccordion.Item isTitle={false} title={"Нужно перейти на страницу фильма, щелкнуть по превью, внизу страницы есть специальное поле для комментариев."} />
             </MenuAccordion.Group>
         </MenuAccordion>
     </div>

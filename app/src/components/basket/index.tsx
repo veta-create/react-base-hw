@@ -1,6 +1,6 @@
 import Preview from "../filmsContent/preview";
 import styles from "./styles.module.css";
-import frodo from "../assets/images/frodo.png";
+import frodo from "../../assets/images/frodo.png";
 
 export default function Basket(props) {
   return (

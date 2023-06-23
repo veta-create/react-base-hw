@@ -1,20 +1,15 @@
 import Image from 'next/image';
 import styles from './styles.module.css';
-import inactiveMinus from "../../assets/images/inactive-minus.svg";
-import activePlus from "../../assets/images/active-plus.svg";
-import close from "../../assets/images/close.svg";
+import inactiveMinus from "../../../assets/images/inactive-minus.svg";
+import activePlus from "../../../assets/images/active-plus.svg";
+import close from "../../../assets/images/close.svg";
 
 export default function Preview(props) {
     if (props.isTicket) {
         return (
             <div className={styles.previewTicket}>
                 <div className={styles.poster}>
-                    <Image
-                        src={props.imageSrc}
-                        width={100}
-                        height={120}
-                        alt={`Prewiew for film ${props.filmName}`}
-                    />
+                    <img width="100px" height="120px" src={props.imageSrc} alt={`Prewiew for film ${props.filmName}`} />
                 </div>
                 <div className={styles.description}>
                     <p className={styles.name}>{props.filmName}</p>
@@ -49,12 +44,7 @@ export default function Preview(props) {
         return (
             <div className={styles.preview}>
                 <div className={styles.poster}>
-                    <Image
-                        src={props.imageSrc}
-                        width={100}
-                        height={120}
-                        alt={`Prewiew for film ${props.filmName}`}
-                    />
+                    <img width="100px" height="120px" src={props.imageSrc} alt={`Prewiew for film ${props.filmName}`} />
                 </div>
                 <div className={styles.description}>
                     <p className={styles.name}>{props.filmName}</p>

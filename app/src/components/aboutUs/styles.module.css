@@ -2,10 +2,9 @@
     max-width: 1856px;
     min-height: calc(100vh - 86px - 84px);
     padding: 24px 32px;
-    font-style: "Roboto";
 
-    color: #1B1F23;
-    background-color: #F5F5F5;
+    color: var(--primary-color);
+    background-color: var(--primary-bg-color);
 }
 
 .text {
@@ -13,22 +12,15 @@
     font-size: 16px;
     line-height: 24px;
 
-    background-color: #FFFFFF;
+    background-color: var(--second-bg-color);
     border-radius: 8px;
 }
 
 .header {
-    margin: 0;
     font-size: 32px;
     line-height: 32px;
 }
 
 .paragraph {
-    margin: 0;
     padding-top: 16px;
-}
-
-@font-face {
-    font-family: "Roboto";
-    src: url("../fonts/Roboto/RobotoFlex-VariableFont_GRAD\,XTRA\,YOPQ\,YTAS\,YTDE\,YTFI\,YTLC\,YTUC\,opsz\,slnt\,wdth\,wght.ttf") format("truetype");
 }

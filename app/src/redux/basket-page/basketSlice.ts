@@ -1,5 +1,4 @@
 import { createSlice } from '@reduxjs/toolkit';
-// import { SettingsState } from '../../../types';
 
 const initialState = {
     ticketsCount: 0

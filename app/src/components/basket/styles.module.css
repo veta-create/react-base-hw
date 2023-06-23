@@ -5,22 +5,19 @@
     min-height: calc(100vh - 86px - 84px);
     padding: 0 32px;
     padding-bottom: 24px;
+
+    background-color: var(--primary-bg-color);
 }
 
 .ticketsCount {
     display: flex;
     justify-content: space-between;
     padding: 24px;
+    margin-top: 10px;
     font-size: 20px;
-    font-family: "Roboto";
     font-weight: 600;
     list-style: 20px;
 
-    background-color: #FFFFFF;
+    background-color: var(--second-bg-color);
     border-radius: 8px;
-}
-
-@font-face {
-    font-family: "Roboto";
-    src: url("../fonts/Roboto/RobotoFlex-VariableFont_GRAD\,XTRA\,YOPQ\,YTAS\,YTDE\,YTFI\,YTLC\,YTUC\,opsz\,slnt\,wdth\,wght.ttf") format("truetype");
 }

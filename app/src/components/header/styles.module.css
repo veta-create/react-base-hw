@@ -3,7 +3,7 @@
     justify-content: space-between;
     align-items: center;
     position: sticky;
-    top: 0;
+    top: 50;
     width: 100%;
     max-width: 1920px;
     height: 84px;
@@ -18,12 +18,11 @@
 .logo {
     padding-left: 32px;
     font-size: 32px;
-    font-family: "Roboto";
     font-style: normal;
     font-weight: 700;
     line-height: 38px;
 
-    color: #FFFFFF;
+    color: var(--second-bg-color);
 }
 
 .basket {
@@ -31,10 +30,5 @@
     height: 25px;
     margin-right: 32px;
 
-    background-image: url(../assets/images/basket.svg);
-}
-
-@font-face {
-    font-family: "Roboto";
-    src: url("../fonts/Roboto/RobotoFlex-VariableFont_GRAD\,XTRA\,YOPQ\,YTAS\,YTDE\,YTFI\,YTLC\,YTUC\,opsz\,slnt\,wdth\,wght.ttf") format("truetype");
+    background-image: url(../../assets/images/basket.svg);
 }
