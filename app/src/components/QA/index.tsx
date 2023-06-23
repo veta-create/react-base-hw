@@ -6,10 +6,10 @@ import Image from "next/image";
 
 const MenuContext = React.createContext(false);
 
-const MenuAccordion = ({ children }) => {
+const MenuAccordion = ({ children }: {children: React.ReactNode}) => {
     const [activeGroup, setActiveGroup] = useState();
 
-    const switchGroup = useCallback((title) => {
+    const switchGroup = useCallback((title: undefined) => {
         setActiveGroup((activeTitle => activeTitle === title ? undefined : title));
     }, []);
     return <MenuContext.Provider value={{ activeGroup, switchGroup }}>{children}</MenuContext.Provider>;
@@ -43,7 +43,7 @@ MenuAccordion.Group = function MenuGroup({ children, title }) {
     </div>;
 };
 
-MenuAccordion.Item = function MenuItem({ children, title, isTitle }) {
+MenuAccordion.Item = function MenuItem({ children, title, isTitle }: { children: { title: string; isTitle: boolean; }, title: string; isTitle: boolean; }) {
     return <div className={isTitle ? styles.mainTitle : styles.text}>{title}</div>;
 };
 

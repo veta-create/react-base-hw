@@ -1,4 +1,5 @@
-.preview, .previewTicket {
+.preview,
+.previewTicket {
     width: 100%;
     max-width: 1376px;
     min-height: 120px;
@@ -24,6 +25,7 @@
 .close {
     display: flex;
     justify-content: center;
+    cursor: pointer;
 }
 
 .description .name {
@@ -55,4 +57,9 @@
 
 .ticketsCounter .ticketsCount {
     padding: 0 8px;
+}
+
+.ticketsCounter .minus,
+.plus {
+    cursor: pointer;
 }

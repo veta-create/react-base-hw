@@ -1,18 +1,26 @@
 import Preview from "../filmsContent/preview";
 import styles from "./styles.module.css";
-import frodo from "../../assets/images/frodo.png";
+import { useAppSelector } from "@/hooks/useSelector";
+import { RootState } from "@/redux/store";
 
-export default function Basket(props) {
+export default function Basket() {
+  const ticketsCount = useAppSelector((state: RootState) => state.basketPage.ticketsCount);
+  const tickets = useAppSelector((state: RootState) => state.basketPage.basket);
   return (
     <div className={styles.basket}>
       <div className={styles.tickets}>
-        <Preview filmName="Властелин колец" filmGenre="Фэнтези" imageSrc={frodo} isTicket={true} />
-        <Preview filmName="Властелин колец" filmGenre="Фэнтези" imageSrc={frodo} isTicket={true} />
-        <Preview filmName="Властелин колец" filmGenre="Фэнтези" imageSrc={frodo} isTicket={true} />
+        {tickets.map(t => <Preview
+          key={t.id}
+          id={t.id}
+          filmName={t.name}
+          filmGenre={t.genre}
+          imageSrc={t.poster}
+          ticketsCount={t.tickets}
+          isTicket={true} />)}
       </div>
       <div className={styles.ticketsCount}>
         <p>Итого билетов:</p>
-        <p>{props.ticketsCount}</p>
+        <p>{ticketsCount}</p>
       </div>
     </div>
   )

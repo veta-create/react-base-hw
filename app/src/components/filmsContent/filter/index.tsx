@@ -1,14 +1,12 @@
 'use client';
 
-import { Formik, Form, Field } from "formik";
-import cn from "classnames";
 import styles from "./styles.module.css";
 import { useAppDispatch } from "@/hooks/useDispatch";
 import { changeNameFilter } from "@/redux/filter-page/filterSlice";
 import { useAppSelector } from "@/hooks/useSelector";
 import { RootState } from "@/redux/store";
 
-export default function Filter(props) {
+export default function Filter() {
     const dispatch = useAppDispatch();
     const nameFilter = useAppSelector((state: RootState) => state.filterPage.nameFilter)
     return (

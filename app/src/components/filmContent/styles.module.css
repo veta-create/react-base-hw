@@ -40,3 +40,37 @@
 .description {
     padding-top: 32px;
 }
+
+.poster img {
+    border-radius: 8px;
+}
+
+.spinner {
+    display: flex;
+    justify-content: center;
+}
+
+.spinner img {
+    animation: 1s linear 0s normal none infinite running spin;
+    -webkit-animation: 1s linear 0s normal none infinite running spin;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@-webkit-keyframes rot {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}

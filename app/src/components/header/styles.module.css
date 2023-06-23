@@ -32,3 +32,29 @@
 
     background-image: url(../../assets/images/basket.svg);
 }
+
+.tickets {
+    width: 100px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.tickets .count {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 28px;
+    height: 28px;
+    font-style: 14px;
+    font-weight: 600;
+
+    color: #FFFFFF;
+    background-color: #FF5500;
+    border-radius: 8px;
+}
+
+
+.tickets .count div {
+    height: 20px;
+}
