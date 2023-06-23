@@ -1,0 +1,41 @@
+.userComment {
+    display: grid;
+    grid-template-columns: 132px 1fr;
+    max-width: 1856px;
+    min-height: 170px;
+    padding: 24px;
+    margin-top: 24px;
+    font-family: "Roboto";
+
+    color: #1B1F23;
+    background-color: #FFFFFF;
+    border-radius: 8px;
+}
+
+.comment .userInfo {
+    display: flex;
+    justify-content: space-between;
+}
+
+.comment .userInfo .userName,
+.comment .userInfo .userRating {
+    font-size: 20px;
+    line-height: 32px;
+}
+
+.comment .userInfo .userName {
+    font-weight: 600;
+}
+
+.comment .text {
+    padding-top: 16px;
+    margin: 0;
+    font-size: 16px;
+    line-height: 24px;
+}
+
+
+@font-face {
+    font-family: "Roboto";
+    src: url("../../fonts/Roboto/RobotoFlex-VariableFont_GRAD\,XTRA\,YOPQ\,YTAS\,YTDE\,YTFI\,YTLC\,YTUC\,opsz\,slnt\,wdth\,wght.ttf") format("truetype");
+}

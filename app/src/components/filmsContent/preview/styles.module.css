@@ -1,0 +1,65 @@
+.preview, .previewTicket {
+    max-width: 1424px;
+    min-height: 120px;
+    padding: 24px;
+    margin-top: 16px;
+
+    background-color: #FFFFFF;
+    border-radius: 8px;
+}
+
+.preview {
+    display: grid;
+    grid-template-columns: 124px 1fr 70px;
+    width: calc(100% - 24px - 34px);
+}
+
+.previewTicket {
+    display: grid;
+    grid-template-columns: 124px 1fr 70px 50px;
+    width: calc(100% - 24px - 34px);
+}
+
+.close {
+    display: flex;
+    justify-content: center;
+}
+
+.description .name {
+    margin: 0;
+    font-size: 20px;
+    font-family: "Roboto";
+    font-weight: 600;
+    line-height: 20px;
+
+    color: #1B1F23;
+}
+
+.description .genre {
+    padding-top: 5px;
+    margin: 0;
+    font-size: 16px;
+    font-family: "Roboto";
+    font-style: oblique;
+    font-weight: 400;
+    line-height: 20px;
+}
+
+.ticketsCounter {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    justify-items: center;
+    font-size: 20px;
+    font-family: "Roboto";
+    font-weight: 600;
+    font-weight: 20px;
+}
+
+.ticketsCounter .ticketsCount {
+    padding: 0 8px;
+}
+
+@font-face {
+    font-family: "Roboto";
+    src: url("../../fonts/Roboto/RobotoFlex-VariableFont_GRAD\,XTRA\,YOPQ\,YTAS\,YTDE\,YTFI\,YTLC\,YTUC\,opsz\,slnt\,wdth\,wght.ttf") format("truetype");
+}

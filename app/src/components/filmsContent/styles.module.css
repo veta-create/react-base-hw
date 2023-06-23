@@ -1,0 +1,18 @@
+.filmsContent {
+    display: grid;
+    grid-template-columns: 2fr 8fr;
+    height: 100%;
+    padding: 24px 32px;
+
+    background-color: #F5F5F5;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+    padding-left: 24px;
+    margin-top: -16px;
+
+    background-color: #F5F5F5;
+}

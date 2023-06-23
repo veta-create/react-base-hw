@@ -1,0 +1,44 @@
+.accardion {
+    min-height: calc(100vh - 84px - 86px);
+    padding: 24px 32px;
+    font-family: "Roboto";
+
+    color: #1B1F23;
+    background-color: #F5F5F5;
+}
+
+.mainTitle,
+.item {
+    max-width: 1856px;
+    padding: 24px;
+    font-size: 32px;
+    font-weight: 600;
+    line-height: 32px;
+
+    background-color: #FFFFFF;
+    border-radius: 8px;
+}
+
+.text {
+    font-size: 16px;
+    line-height: 24px;
+}
+
+.item {
+    margin-top: 24px;
+    font-size: 24px;
+}
+
+.item .title {
+    display: flex;
+    justify-content: space-between;
+}
+
+.item .icon {
+    cursor: pointer;
+}
+
+@font-face {
+    font-family: "Roboto";
+    src: url("../fonts/Roboto/RobotoFlex-VariableFont_GRAD\,XTRA\,YOPQ\,YTAS\,YTDE\,YTFI\,YTLC\,YTUC\,opsz\,slnt\,wdth\,wght.ttf") format("truetype");
+}

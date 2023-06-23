@@ -1,0 +1,5 @@
+.content {
+    min-height: calc(100vh - 86px - 84px);
+
+    background-color: #F5F5F5;
+};
