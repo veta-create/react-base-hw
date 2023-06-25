@@ -1,7 +1,7 @@
-import Preview from "../filmsContent/preview";
-import styles from "./styles.module.css";
-import { useAppSelector } from "@/hooks/useSelector";
 import { RootState } from "@/redux/store";
+import { useAppSelector } from "@/hooks/useSelector";
+import Preview from "./preview";
+import styles from "../styles/basket.module.css";
 
 export default function Basket() {
   const ticketsCount = useAppSelector((state: RootState) => state.basketPage.ticketsCount);

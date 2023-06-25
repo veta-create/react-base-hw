@@ -1,7 +1,7 @@
-import Portal from "../portal";
-import styles from "./styles.module.css";
+import Portal from "./portal";
+import styles from "../styles/dropDown.module.css";
 
-const DropDown = ({children, isOpen, id}) => {
+const DropDown = ({ children, isOpen, id }) => {
     console.log(isOpen)
     if (isOpen) {
         return (

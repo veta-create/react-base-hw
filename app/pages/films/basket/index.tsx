@@ -1,5 +1,5 @@
 import { useAppSelector } from "@/hooks/useSelector";
-import Basket from "../../../src/components/basket/index";
+import Basket from "../../../src/components/basket";
 import styles from '../page.module.css';
 import { RootState } from "@/redux/store";
 

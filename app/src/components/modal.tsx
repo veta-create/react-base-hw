@@ -1,8 +1,8 @@
-import PropTypes from "prop-types";
-import Portal from "../portal";
-import styles from "./styles.module.css";
 import Image from "next/image";
-import cancel from "../../assets/images/cancel.svg";
+import PropTypes from "prop-types";
+import Portal from "./portal";
+import styles from "../styles/modal.module.css";
+import cancel from "../assets/images/cancel.svg";
 
 const Modal = (props) => {
     if (props.isOpen) {

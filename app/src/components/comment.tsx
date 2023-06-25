@@ -1,5 +1,5 @@
 import Image from "next/image";
-import styles from "./styles.module.css";
+import styles from "../styles/comment.module.css";
 
 export default function Comment(props) {
     return (

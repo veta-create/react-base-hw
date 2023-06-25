@@ -1,7 +1,7 @@
-import Link from 'next/link';
-import styles from './styles.module.css';
-import { useAppSelector } from '@/hooks/useSelector';
-import { RootState } from '@/redux/store';
+import Link from "next/link";
+import { RootState } from "@/redux/store";
+import { useAppSelector } from "@/hooks/useSelector";
+import styles from "../styles/header.module.css";
 
 export default function Header() {
   const ticketsCount = useAppSelector((state: RootState) => state.basketPage.ticketsCount);

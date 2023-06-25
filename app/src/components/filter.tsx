@@ -1,16 +1,16 @@
 'use client';
 
-import styles from "./styles.module.css";
-import cn from "classnames";
-import { useState } from "react";
-import { useAppDispatch } from "@/hooks/useDispatch";
-import { changeCinemaFilter, changeGenreFilter, changeNameFilter } from "@/redux/filter-page/filterSlice";
-import { useAppSelector } from "@/hooks/useSelector";
-import { RootState } from "@/redux/store";
-import DropDown from "@/components/dropDown";
 import Image from "next/image";
-import arrowOpen from "../../../assets/images/arrow-open-min.svg";
-import arrowClose from "../../../assets/images/arrow-close-min.svg";
+import { useState } from "react";
+import cn from "classnames";
+import { RootState } from "@/redux/store";
+import { useAppDispatch } from "@/hooks/useDispatch";
+import { useAppSelector } from "@/hooks/useSelector";
+import { changeCinemaFilter, changeGenreFilter, changeNameFilter } from "@/redux/filter-page/filterSlice";
+import DropDown from "@/components/dropDown";
+import styles from "../styles/filter.module.css";
+import arrowOpen from "../assets/images/arrow-open-min.svg";
+import arrowClose from "../assets/images/arrow-close-min.svg";
 
 export default function Filter() {
     const dispatch = useAppDispatch();

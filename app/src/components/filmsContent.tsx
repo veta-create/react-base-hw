@@ -1,10 +1,10 @@
-import { useAppSelector } from '@/hooks/useSelector';
-import { RootState } from '@/redux/store';
-import { Movie } from '../../../types';
-import styles from './styles.module.css';
-import Filter from './filter';
-import Preview from './preview';
-import { genreCracker } from '../../../utils/genreCracker';
+import { RootState } from "@/redux/store";
+import { useAppSelector } from "@/hooks/useSelector";
+import { genreCracker } from "../../utils/genreCracker";
+import { Movie } from "../../types";
+import Filter from "./filter";
+import Preview from "./preview";
+import styles from "../styles/filmsContent.module.css";
 
 export default function FilmsContent() {
   const movies = useAppSelector((state: RootState) => state.filmsPage.allMovies);

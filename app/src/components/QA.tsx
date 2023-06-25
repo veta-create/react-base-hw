@@ -1,12 +1,12 @@
 import React, { useCallback, useContext, useState } from "react";
-import styles from "./styles.module.css";
-import open from "../../assets/images/arrow-open.svg";
-import close from "../../assets/images/arrow-close.svg";
 import Image from "next/image";
+import styles from "../styles/QA.module.css";
+import open from "../assets/images/arrow-open.svg";
+import close from "../assets/images/arrow-close.svg";
 
 const MenuContext = React.createContext(false);
 
-const MenuAccordion = ({ children }: {children: React.ReactNode}) => {
+const MenuAccordion = ({ children }: { children: React.ReactNode }) => {
     const [activeGroup, setActiveGroup] = useState();
 
     const switchGroup = useCallback((title: undefined) => {
@@ -50,7 +50,7 @@ MenuAccordion.Item = function MenuItem({ children, title, isTitle }: { children:
 export default function QA() {
     return <div className={styles.accardion}>
         <MenuAccordion>
-            <MenuAccordion.Item title={"Вопросы-ответы"} isTitle={true}/>
+            <MenuAccordion.Item title={"Вопросы-ответы"} isTitle={true} />
             <MenuAccordion.Group title={"Что такое Билетопоиск?"}>
                 <MenuAccordion.Item isTitle={false} title={"Мы — крупнейший сервис о кино в рунете. На нем вы сможете посмотреть фильмы и сериалы, купить билеты в кино, узнать рейтинги популярных видео и интересные факты, поставить фильмам оценки, написать рецензии и дополнить описание фильмов."} />
             </MenuAccordion.Group>

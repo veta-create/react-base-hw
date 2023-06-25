@@ -1,18 +1,14 @@
-import Image from 'next/image';
-import styles from './styles.module.css';
-import inactiveMinus from "../../../assets/images/inactive-minus.svg";
-import activeMinus from "../../../assets/images/active-minus.svg";
-import inactivePlus from "../../../assets/images/inactive-plus.svg";
-import activePlus from "../../../assets/images/active-plus.svg";
-import close from "../../../assets/images/close.svg";
-import { useAppDispatch } from '@/hooks/useDispatch';
-import { addTicket, decrement, increment, removeAll, removeTicket } from '@/redux/basket-page/basketSlice';
-import React, { useState } from 'react';
-import Link from 'next/link';
-import Modal from '@/components/modal';
-import { useAppSelector } from '@/hooks/useSelector';
-import { RootState } from '@/redux/store';
-import Counter from './counter';
+import React, { useState } from "react";
+import Image from "next/image";
+import Link from "next/link";
+import { RootState } from "@/redux/store";
+import { useAppDispatch } from "@/hooks/useDispatch";
+import { useAppSelector } from "@/hooks/useSelector";
+import { addTicket, decrement, increment, removeAll, removeTicket } from "@/redux/basket-page/basketSlice";
+import Modal from "@/components/modal";
+import Counter from "./counter";
+import styles from "../styles/preview.module.css";
+import close from "../assets/images/close.svg";
 
 interface PreviewPropsTypes {
     id: string,

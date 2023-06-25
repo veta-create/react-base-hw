@@ -1,15 +1,15 @@
-import { useEffect, useState } from 'react';
-import Image from 'next/image';
-import styles from './styles.module.css';
-import Comment from './comment';
-import noPhoto from "../../assets/images/noPhoto.png";
-import spinner from "../../assets/images/spinner.png";
-import Counter from '../filmsContent/preview/counter';
-import { useAppSelector } from '@/hooks/useSelector';
-import { RootState } from '@/redux/store';
-import { addTicket, decrement, increment, removeTicket } from '@/redux/basket-page/basketSlice';
-import { useAppDispatch } from '@/hooks/useDispatch';
-import { genreCracker } from '../../../utils/genreCracker';
+import { useEffect, useState } from "react";
+import Image from "next/image";
+import { RootState } from "@/redux/store";
+import { useAppDispatch } from "@/hooks/useDispatch";
+import { useAppSelector } from "@/hooks/useSelector";
+import { addTicket, decrement, increment, removeTicket } from "@/redux/basket-page/basketSlice";
+import { genreCracker } from "../../utils/genreCracker";
+import Comment from "./comment";
+import Counter from "./counter";
+import styles from "../styles/filmContent.module.css";
+import noPhoto from "../assets/images/noPhoto.png";
+import spinner from "../assets/images/spinner.png";
 
 export default function FilmContent(props) {
     const [movieData, setMovieData] = useState(0);
