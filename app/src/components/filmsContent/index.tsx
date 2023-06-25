@@ -5,10 +5,12 @@ import styles from './styles.module.css';
 import Filter from './filter';
 import Preview from './preview';
 import Link from 'next/link';
+import { genreCracker } from '../../../utils/genreCracker';
 
 export default function FilmsContent() {
   const movies = useAppSelector((state: RootState) => state.filmsPage.allMovies);
   const nameFilter = useAppSelector((state: RootState) => state.filterPage.nameFilter);
+  const genreFilter = useAppSelector((state: RootState) => state.filterPage.genreFilter);
   const tickets = useAppSelector((state: RootState) => state.basketPage.basket);
 
   const getTicketsCount = (id: string) => {
@@ -39,11 +41,22 @@ export default function FilmsContent() {
             const hasSubstr = m.title.toLowerCase().match(regExp);
             return hasSubstr;
           })
+          .filter((m: Movie) => {
+            const genre = genreCracker(m.genre);
+            // console.log(genreFilter)
+            if (genreFilter === "Не выбрано" || genreFilter === "Выберите жанр") {
+              return m;
+            } else {
+              if (genre === genreFilter) {
+                return m;
+              };
+            };
+          })
           .map((movie: Movie) => <Preview id={movie.id}
             ticketsCount={getTicketsCount(movie.id)}
             key={movie.id}
             filmName={movie.title}
-            filmGenre={movie.genre}
+            filmGenre={genreCracker(movie.genre)}
             imageSrc={movie.posterUrl}
             isTicket={false} />)}
       </div>

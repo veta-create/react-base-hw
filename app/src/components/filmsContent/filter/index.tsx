@@ -1,14 +1,28 @@
 'use client';
 
 import styles from "./styles.module.css";
+import cn from "classnames";
+import { useState } from "react";
 import { useAppDispatch } from "@/hooks/useDispatch";
-import { changeNameFilter } from "@/redux/filter-page/filterSlice";
+import { changeGenreFilter, changeNameFilter } from "@/redux/filter-page/filterSlice";
 import { useAppSelector } from "@/hooks/useSelector";
 import { RootState } from "@/redux/store";
+import DropDown from "@/components/dropDown";
+import Image from "next/image";
+import arrowOpen from "../../../assets/images/arrow-open-min.svg";
+import arrowClose from "../../../assets/images/arrow-close-min.svg";
 
 export default function Filter() {
     const dispatch = useAppDispatch();
-    const nameFilter = useAppSelector((state: RootState) => state.filterPage.nameFilter)
+    const nameFilter = useAppSelector((state: RootState) => state.filterPage.nameFilter);
+    const genreFilter = useAppSelector((state: RootState) => state.filterPage.genreFilter);
+    const [openGenreFilter, setOpenGenreFilter] = useState(false);
+
+    const onChangeGenreFilter = (filterValue: string | null) => {
+        dispatch(changeGenreFilter(filterValue));
+        setOpenGenreFilter(false);
+    };
+
     return (
         <div className={styles.filter}>
 
@@ -27,28 +41,54 @@ export default function Filter() {
                         value={nameFilter} />
                 </div>
 
-                {/* <div>
-                    <p className={styles.filterName}>Жанр</p>
-                    <Field className={styles.filterByGenre} as="select" name="genre">
-                        <option value="placeholder" className={styles.optionNone}>Выберите кинотеатр</option>
-                        <option value="nonde" className={styles.optionNone}>Не выбрано</option>
-
-                        <option value="action">Боевик</option>
-                        <option value="comedy">Комедия</option>
-                        <option value="fantasy">Фэнтези</option>
-                        <option value="horror">Ужасы</option>
-                    </Field>
-                </div> */}
-                {/* 
                 <div>
-                    <p className={styles.filterName}>Кинотеатр</p>
-                    <Field className={cn(styles.filterByCinema, styles.box)} as="select" name="cinema">
-                        <option value="placeholder" className={styles.optionNone}>Выберите кинотеатр</option>
-                        <option value="none" className={styles.optionNone}>Не выбрано</option>
-                        <option value="cinema" className={styles.optionNone}>Кинотеатр</option>
-
-                    </Field>
-                </div> */}
+                    <p className={styles.filterName}>Жанр</p>
+                    <button className={cn(styles.filterSelect, genreFilter !== "Не выбрано" && genreFilter !== "Выберите жанр" && styles.active)} onClick={(e) => e.preventDefault()}>
+                        <p>{genreFilter}</p>
+                        {openGenreFilter ?
+                            <Image
+                                onClick={() => setOpenGenreFilter(false)}
+                                src={arrowClose}
+                                width={20}
+                                height={20}
+                                alt="filter by genre open"
+                            /> :
+                            <Image
+                                onClick={() => setOpenGenreFilter(true)}
+                                src={arrowOpen}
+                                width={20}
+                                height={20}
+                                alt="filter by genre open"
+                            />}
+                    </button>
+                    <DropDown isOpen={openGenreFilter}>
+                        <li onClick={(e) => {
+                            onChangeGenreFilter(e.currentTarget.textContent);
+                        }}>
+                            Не выбрано
+                        </li>
+                        <li onClick={(e) => {
+                            onChangeGenreFilter(e.currentTarget.textContent);
+                        }}>
+                            Боевик
+                        </li>
+                        <li onClick={(e) => {
+                            onChangeGenreFilter(e.currentTarget.textContent);
+                        }}>
+                            Комедия
+                        </li>
+                        <li onClick={(e) => {
+                            onChangeGenreFilter(e.currentTarget.textContent);
+                        }}>
+                            Фэнтези
+                        </li>
+                        <li onClick={(e) => {
+                            onChangeGenreFilter(e.currentTarget.textContent);
+                        }}>
+                            Ужасы
+                        </li>
+                    </DropDown>
+                </div>
 
             </form>
 

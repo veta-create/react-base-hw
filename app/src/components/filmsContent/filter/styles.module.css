@@ -36,13 +36,11 @@
     color: var(--primary-color);
 }
 
-.filterByName,
-.filterByGenre,
-.filterByCinema {
-    width: calc(100% - 48px);
-    max-width: 328px;
+.filterByName {
+    width: 328px;
     min-height: 20px;
     padding: 10px 16px;
+    font-family: "SF";
 
     border: 1px solid #E1E3E6;
     border-radius: 8px;
@@ -54,19 +52,30 @@
     color: #999FA6;
 }
 
-.filterByGenre option,
-.filterByCinema option {
+
+.filterSelect {
+    display: flex;
+    justify-content: space-between;
+    width: 328px;
+    padding: 10px;
+    padding-left: 16px;
+    text-align: left;
     font-size: 14px;
     font-family: "SF";
-    font-style: normal;
-    font-weight: 400;
     line-height: 20px;
 
-    color: var(--primary-color);
+    color: #999FA6;
+    background-color: var(--second-bg-color);
+    border: 1px solid #E1E3E6;
+    border-radius: 8px;
 }
 
-.optionNone[selected] {
-    color: #999FA6;
+.filterSelect img {
+    cursor: pointer;
+}
+
+.active {
+    color: #111111;
 }
 
 @font-face {

@@ -1,7 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-    nameFilter: ''
+    nameFilter: '',
+    genreFilter: 'Выберите жанр'
 };
 
 const filterSlice = createSlice({
@@ -11,8 +12,11 @@ const filterSlice = createSlice({
         changeNameFilter(state, action) {
             state.nameFilter = action.payload;
         },
+        changeGenreFilter(state, action) {
+            state.genreFilter = action.payload;
+        }
     }
 });
 
 export default filterSlice.reducer;
-export const { changeNameFilter } = filterSlice.actions;
+export const { changeNameFilter, changeGenreFilter } = filterSlice.actions;

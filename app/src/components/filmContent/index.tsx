@@ -9,6 +9,7 @@ import { useAppSelector } from '@/hooks/useSelector';
 import { RootState } from '@/redux/store';
 import { addTicket, decrement, increment, removeTicket } from '@/redux/basket-page/basketSlice';
 import { useAppDispatch } from '@/hooks/useDispatch';
+import { genreCracker } from '../../../utils/genreCracker';
 
 export default function FilmContent(props) {
     const [movieData, setMovieData] = useState(0);
@@ -72,7 +73,7 @@ export default function FilmContent(props) {
                             removeTicketsHandler={removeTicketsHandler}
                             addTicketsHandler={addTicketsHandler} />
                     </div>
-                    <div className={styles.genre}><b>Жанр:</b> {movieData.genre}</div>
+                    <div className={styles.genre}><b>Жанр:</b> {genreCracker(movieData.genre)}</div>
                     <div className={styles.year}><b>Год выпуска:</b> {movieData.releaseYear}</div>
                     <div className={styles.rating}><b>Рейтинг:</b> {movieData.rating}</div>
                     <div className={styles.producer}><b>Режиссер:</b> {movieData.director}</div>
