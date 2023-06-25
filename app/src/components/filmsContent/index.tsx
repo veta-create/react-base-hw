@@ -4,13 +4,13 @@ import { Movie } from '../../../types';
 import styles from './styles.module.css';
 import Filter from './filter';
 import Preview from './preview';
-import Link from 'next/link';
 import { genreCracker } from '../../../utils/genreCracker';
 
 export default function FilmsContent() {
   const movies = useAppSelector((state: RootState) => state.filmsPage.allMovies);
   const nameFilter = useAppSelector((state: RootState) => state.filterPage.nameFilter);
   const genreFilter = useAppSelector((state: RootState) => state.filterPage.genreFilter);
+  const cinemaFilter = useAppSelector((state: RootState) => state.filterPage.cinemaFilter);
   const tickets = useAppSelector((state: RootState) => state.basketPage.basket);
 
   const getTicketsCount = (id: string) => {
@@ -46,10 +46,17 @@ export default function FilmsContent() {
             // console.log(genreFilter)
             if (genreFilter === "Не выбрано" || genreFilter === "Выберите жанр") {
               return m;
-            } else {
-              if (genre === genreFilter) {
-                return m;
-              };
+            };
+            if (genre === genreFilter) {
+              return m;
+            };
+          })
+          .filter((m: Movie) => {
+            if (cinemaFilter.name === "Не выбрано" || cinemaFilter.name === "Выберите кинотеатр") {
+              return m;
+            };
+            if (cinemaFilter.movies.indexOf(m.id) > -1) {
+              return m;
             };
           })
           .map((movie: Movie) => <Preview id={movie.id}

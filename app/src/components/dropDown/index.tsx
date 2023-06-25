@@ -1,11 +1,11 @@
 import Portal from "../portal";
 import styles from "./styles.module.css";
 
-const DropDown = ({children, isOpen}) => {
+const DropDown = ({children, isOpen, id}) => {
     console.log(isOpen)
     if (isOpen) {
         return (
-            <Portal>
+            <Portal isModal={false} id={id}>
                 <div className={styles.dropDown}>
                     <ul>
                         {children}

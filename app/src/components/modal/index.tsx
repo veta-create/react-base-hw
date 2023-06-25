@@ -7,7 +7,7 @@ import cancel from "../../assets/images/cancel.svg";
 const Modal = (props) => {
     if (props.isOpen) {
         return (
-            <Portal>
+            <Portal isModal={true}>
                 <div className={styles.modalOverlay}>
                     <div className={styles.modalWindow}>
                         <div className={styles.modalHeader}>

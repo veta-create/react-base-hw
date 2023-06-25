@@ -13,8 +13,8 @@ const filmsSlice = createSlice({
             state.allMovies = action.payload;
         },
         setCinemas(state, action) {
-            state.cinemas = action.payload;
-        },
+            state.cinemas = [...action.payload];
+        }
     }
 });
 

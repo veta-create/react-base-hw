@@ -4,7 +4,7 @@ import styles from "./styles.module.css";
 import cn from "classnames";
 import { useState } from "react";
 import { useAppDispatch } from "@/hooks/useDispatch";
-import { changeGenreFilter, changeNameFilter } from "@/redux/filter-page/filterSlice";
+import { changeCinemaFilter, changeGenreFilter, changeNameFilter } from "@/redux/filter-page/filterSlice";
 import { useAppSelector } from "@/hooks/useSelector";
 import { RootState } from "@/redux/store";
 import DropDown from "@/components/dropDown";
@@ -16,15 +16,23 @@ export default function Filter() {
     const dispatch = useAppDispatch();
     const nameFilter = useAppSelector((state: RootState) => state.filterPage.nameFilter);
     const genreFilter = useAppSelector((state: RootState) => state.filterPage.genreFilter);
+    const cinemaFilter = useAppSelector((state: RootState) => state.filterPage.cinemaFilter);
+    const cinemas = useAppSelector((state: RootState) => state.filmsPage.cinemas);
     const [openGenreFilter, setOpenGenreFilter] = useState(false);
+    const [openCinemaFilter, setOpenCinemaFilter] = useState(false);
 
     const onChangeGenreFilter = (filterValue: string | null) => {
         dispatch(changeGenreFilter(filterValue));
         setOpenGenreFilter(false);
     };
 
+    const onChangeCinemaFilter = (filterValue: string | null, movies: [] | null) => {
+        dispatch(changeCinemaFilter({ name: filterValue, movies: movies }));
+        setOpenCinemaFilter(false);
+    };
+
     return (
-        <div className={styles.filter}>
+        <div className={styles.filter} id="filter">
 
             <form className={styles.form}>
 
@@ -41,7 +49,7 @@ export default function Filter() {
                         value={nameFilter} />
                 </div>
 
-                <div>
+                <div id="filter-genre-container">
                     <p className={styles.filterName}>Жанр</p>
                     <button className={cn(styles.filterSelect, genreFilter !== "Не выбрано" && genreFilter !== "Выберите жанр" && styles.active)} onClick={(e) => e.preventDefault()}>
                         <p>{genreFilter}</p>
@@ -54,14 +62,17 @@ export default function Filter() {
                                 alt="filter by genre open"
                             /> :
                             <Image
-                                onClick={() => setOpenGenreFilter(true)}
+                                onClick={() => {
+                                    setOpenCinemaFilter(false);
+                                    setOpenGenreFilter(true);
+                                }}
                                 src={arrowOpen}
                                 width={20}
                                 height={20}
                                 alt="filter by genre open"
                             />}
                     </button>
-                    <DropDown isOpen={openGenreFilter}>
+                    <DropDown isOpen={openGenreFilter} id={"filter-genre-container"}>
                         <li onClick={(e) => {
                             onChangeGenreFilter(e.currentTarget.textContent);
                         }}>
@@ -89,6 +100,42 @@ export default function Filter() {
                         </li>
                     </DropDown>
                 </div>
+
+                <div id="filter-cinema-container">
+                    <p className={styles.filterName}>Кинотеатр</p>
+                    <button className={cn(styles.filterSelect, cinemaFilter.name !== "Не выбрано" && cinemaFilter.name !== "Выберите кинотеатр" && styles.active)} onClick={(e) => e.preventDefault()}>
+                        <p>{cinemaFilter.name}</p>
+                        {openCinemaFilter ?
+                            <Image
+                                onClick={() => { setOpenCinemaFilter(false) }}
+                                src={arrowClose}
+                                width={20}
+                                height={20}
+                                alt="filter by cinema close"
+                            /> :
+                            <Image
+                                onClick={() => {
+                                    setOpenGenreFilter(false);
+                                    setOpenCinemaFilter(true);
+                                }}
+                                src={arrowOpen}
+                                width={20}
+                                height={20}
+                                alt="filter by cinema open"
+                            />}
+                    </button>
+                    <DropDown isOpen={openCinemaFilter} id={"filter-cinema-container"}>
+                        <li onClick={(e) => {
+                            onChangeCinemaFilter(e.currentTarget.textContent, []);
+                        }}>
+                            Не выбрано
+                        </li>
+                        {cinemas.map(c => <li onClick={() => {
+                            onChangeCinemaFilter(c.name, c.movieIds)
+                        }}>{c.name}</li>)}
+                    </DropDown>
+                </div>
+
 
             </form>
 

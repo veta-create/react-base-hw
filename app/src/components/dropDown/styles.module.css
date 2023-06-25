@@ -1,9 +1,7 @@
 .dropDown {
-    width: 360px;
-    height: 228px;
-    position: absolute;
-    top: 45%;
-    left: 4%;
+    position: relative;
+    width: 328px;
+    z-index: 2;
 
     background-color: var(--second-bg-color);
     border-radius: 8px;
@@ -18,4 +16,8 @@
     cursor: pointer;
 
     color: var(--primary-color);
+}
+
+.dropDown li:hover {
+    background-color: #dfdede;
 }
