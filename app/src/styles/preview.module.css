@@ -1,7 +1,6 @@
 .preview,
 .previewTicket {
     width: 100%;
-    max-width: 1376px;
     min-height: 120px;
     padding: 24px;
     margin-top: 16px;
@@ -13,13 +12,11 @@
 .preview {
     display: grid;
     grid-template-columns: 124px 1fr 70px;
-    width: calc(100% - 24px - 34px);
 }
 
 .previewTicket {
     display: grid;
     grid-template-columns: 124px 1fr 70px 50px;
-    width: calc(100% - 24px - 34px);
 }
 
 .close {

@@ -77,7 +77,7 @@ export default function Preview(props: PreviewPropsTypes) {
                     <Image loader={posterLoader} src="preview.png" width={100} height={120} alt={`Prewiew for film ${props.filmName}`} />
                 </div>
                 <div className={styles.description}>
-                    <Link href={`/films/film/${props.id}`}><p className={styles.name}>{props.filmName}</p></Link>
+                    <Link href={`/film/${props.id}`}><p className={styles.name}>{props.filmName}</p></Link>
                     <p className={styles.genre}>{props.filmGenre}</p>
                 </div>
 
@@ -101,7 +101,7 @@ export default function Preview(props: PreviewPropsTypes) {
                     <Image loader={posterLoader} src="preview.png" width={100} height={120} alt={`Prewiew for film ${props.filmName}`} />
                 </div>
                 <div className={styles.description}>
-                    <Link href={`/films/film/${props.id}`}><p className={styles.name}>{props.filmName}</p></Link>
+                    <Link href={`/film/${props.id}`}><p className={styles.name}>{props.filmName}</p></Link>
                     <p className={styles.genre}>{props.filmGenre}</p>
                 </div>
 

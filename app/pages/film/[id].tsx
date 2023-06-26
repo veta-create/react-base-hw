@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import FilmContent from "../../../src/components/filmContent";
+import FilmContent from "../../src/components/filmContent";
 import styles from "../page.module.css";
 
 export default function FilmPage() {

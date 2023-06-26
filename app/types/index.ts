@@ -36,5 +36,5 @@ export interface CommentType {
 export interface CinemaType {
     id: string,
     name: string,
-    moviesIds: [] | null;
+    movieIds: [] | null;
 };

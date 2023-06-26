@@ -23,6 +23,7 @@ export default function FilmContent(props: FilmContentPropsTypes) {
     const [comments, setComments] = useState<Array<CommentType>>();
     const dispatch = useAppDispatch();
     const ticketsCount = useAppSelector((state: RootState) => state.basketPage.ticketsCount);
+    const basket = useAppSelector((state: RootState) => state.basketPage.basket);
 
     const posterLoader = () => {
         if (movieData) {
@@ -32,33 +33,44 @@ export default function FilmContent(props: FilmContentPropsTypes) {
         }
     };
 
+    const determineTicketsCount = (id: string | string[] | undefined): number | undefined => {
+        let tickets = basket.find(t => t.id === id)?.tickets;
+        return tickets;
+    };
+
     useEffect(() => {
         fetch(`http://localhost:3001/api/movie?movieId=${props.id}`).then((data) => data.json()).then((data) => {
             setMovieData(data);
         })
         fetch(`http://localhost:3001/api/reviews?movieId=${props.id}`).then((data) => data.json()).then((data) => {
             setComments(data);
-            console.log(data)
         })
     }, [])
 
     const removeTicketsHandler = () => {
-        if (ticketsCount > 0) {
-            dispatch(decrement());
-            if (movieData) {
-                dispatch(removeTicket({
-                    id: props.id,
-                    name: movieData.title,
-                    genre: movieData.genre,
-                    poster: movieData.posterUrl,
-                    tickets: 1
-                }));
-            }
+        const tickets = determineTicketsCount(props.id);
+        if (tickets !== undefined) {
+            if (tickets > 0) {
+                dispatch(decrement());
+                if (movieData) {
+                    dispatch(removeTicket({
+                        id: props.id,
+                        name: movieData.title,
+                        genre: movieData.genre,
+                        poster: movieData.posterUrl,
+                        tickets: 1
+                    }));
+                };
+            };
         };
     };
 
     const addTicketsHandler = () => {
-        if (ticketsCount < 30) {
+        let tickets = determineTicketsCount(props.id);
+        if (tickets === undefined) {
+            tickets = 0;
+        };
+        if (tickets < 30) {
             dispatch(increment());
             if (movieData) {
                 dispatch(addTicket({
@@ -68,7 +80,7 @@ export default function FilmContent(props: FilmContentPropsTypes) {
                     poster: movieData.posterUrl,
                     tickets: 1
                 }));
-            }
+            };
         };
     };
 
@@ -86,7 +98,7 @@ export default function FilmContent(props: FilmContentPropsTypes) {
                 <div className={styles.info}>
                     <div className={styles.title}>
                         <h1 className={styles.name}>{movieData.title}</h1>
-                        <Counter ticketsCount={ticketsCount}
+                        <Counter ticketsCount={determineTicketsCount(props.id)}
                             removeTicketsHandler={removeTicketsHandler}
                             addTicketsHandler={addTicketsHandler} />
                     </div>
@@ -102,6 +114,7 @@ export default function FilmContent(props: FilmContentPropsTypes) {
             </div>
             <div className={styles.comments}>
                 {comments && comments.map((c: CommentType) => <Comment
+                    key={c.id}
                     userPhoto={noPhoto}
                     userName={c.name}
                     userComment={c.text}

@@ -4,9 +4,9 @@ import { RootState } from "@/redux/store";
 import { useAppDispatch } from "@/hooks/useDispatch";
 import { useAppSelector } from "@/hooks/useSelector";
 import { setCinemas, setMovies } from "@/redux/films-page/filmsSlice";
-import FilmsContent from "../../src/components/filmsContent";
+import FilmsContent from "../src/components/filmsContent";
 import styles from "./page.module.css";
-import spinner from "../../src/assets/images/spinner.png";
+import spinner from "../src/assets/images/spinner.png";
 
 export default function Home() {
   const dispatch = useAppDispatch();
@@ -26,7 +26,6 @@ export default function Home() {
       data.then((value) => {
         let cinemas = Object.values(value);
         dispatch(setCinemas(cinemas));
-        console.log(cinemas)
       })
     });
   }, [])

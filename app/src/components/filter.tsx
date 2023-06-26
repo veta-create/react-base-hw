@@ -27,7 +27,7 @@ export default function Filter() {
         setOpenGenreFilter(false);
     };
 
-    const onChangeCinemaFilter = (filterValue: string | null, movies: [] | null) => {
+    const onChangeCinemaFilter = (filterValue: string | null, movies: string[] | null) => {
         dispatch(changeCinemaFilter({ name: filterValue, movies: movies }));
         setOpenCinemaFilter(false);
     };
@@ -131,8 +131,8 @@ export default function Filter() {
                         }}>
                             Не выбрано
                         </li>
-                        {cinemas.map((c: CinemaType) => <li onClick={() => {
-                            onChangeCinemaFilter(c.name, c.moviesIds)
+                        {cinemas.map((c: CinemaType) => <li key={c.id} onClick={() => {
+                            onChangeCinemaFilter(c.name, c.movieIds);
                         }}>{c.name}</li>)}
                     </DropDown>
                 </div>

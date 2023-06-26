@@ -4,21 +4,21 @@ import styles from "../styles/QA.module.css";
 import open from "../assets/images/arrow-open.svg";
 import close from "../assets/images/arrow-close.svg";
 
-type MenuContextType = { activeGroup: string | undefined, switchGroup: (title: undefined) => void } | boolean;
+type MenuContextType = { activeGroup: string | undefined, switchGroup: (title: string) => void | boolean };
 
-const MenuContext = React.createContext<MenuContextType>(false);
+const MenuContext = React.createContext<MenuContextType>({ activeGroup: "", switchGroup: () => { } });
 
 const MenuAccordion = ({ children }: { children: React.ReactNode }) => {
-    const [activeGroup, setActiveGroup] = useState();
+    const [activeGroup, setActiveGroup] = useState("");
 
-    const switchGroup = useCallback((title: undefined) => {
-        setActiveGroup((activeTitle => activeTitle === title ? undefined : title));
+    const switchGroup = useCallback((title: string) => {
+        setActiveGroup(activeTitle => activeTitle === title ? "" : title);
     }, []);
     return <MenuContext.Provider value={{ activeGroup, switchGroup }}>{children}</MenuContext.Provider>;
 };
 
 MenuAccordion.Group = function MenuGroup({ children, title }: { children: React.ReactNode, title: string }) {
-    const { activeGroup, switchGroup }: any = useContext(MenuContext);
+    const { activeGroup, switchGroup } = useContext<MenuContextType>(MenuContext);
     return <div className={styles.item}>
         <div className={styles.title}>
             <div>{title}</div>

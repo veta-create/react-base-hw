@@ -8,7 +8,7 @@ import activePlus from "../assets/images/active-plus.svg";
 interface CounterPropsTypes {
     removeTicketsHandler: React.MouseEventHandler<HTMLDivElement>,
     addTicketsHandler: React.MouseEventHandler<HTMLDivElement>,
-    ticketsCount: number
+    ticketsCount: number | undefined
 };
 
 export default function Counter(props: CounterPropsTypes) {
@@ -17,19 +17,33 @@ export default function Counter(props: CounterPropsTypes) {
             <div className={styles.ticketsCounter}>
                 <div onClick={props.removeTicketsHandler}
                     className={styles.minus}>
-                    <Image src={props.ticketsCount > 0 ? activeMinus : inactiveMinus}
-                        width={20}
-                        height={20}
-                        alt="minus" />
+                    {props.ticketsCount !== undefined ?
+                        <Image src={props.ticketsCount > 0 ? activeMinus : inactiveMinus}
+                            width={20}
+                            height={20}
+                            alt="minus" />
+                        :
+                        <Image src={inactiveMinus}
+                            width={20}
+                            height={20}
+                            alt="minus" />
+                    }
                 </div>
-                <div className={styles.ticketsCount}>{props.ticketsCount}</div>
+                <div className={styles.ticketsCount}>{props.ticketsCount ? props.ticketsCount : 0}</div>
                 <div
                     onClick={props.addTicketsHandler}
                     className={styles.plus}>
-                    <Image src={props.ticketsCount < 30 ? activePlus : inactivePlus}
-                        width={20}
-                        height={20}
-                        alt="plus" />
+                    {props.ticketsCount !== undefined ?
+                        <Image src={props.ticketsCount < 30 ? activePlus : inactivePlus}
+                            width={20}
+                            height={20}
+                            alt="plus" />
+                        :
+                        <Image src={activePlus}
+                            width={20}
+                            height={20}
+                            alt="plus" />
+                    }
                 </div>
             </div>
         </div>
