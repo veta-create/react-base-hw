@@ -5,7 +5,13 @@ import activeMinus from "../assets/images/active-minus.svg";
 import inactivePlus from "../assets/images/inactive-plus.svg";
 import activePlus from "../assets/images/active-plus.svg";
 
-export default function Counter(props) {
+interface CounterPropsTypes {
+    removeTicketsHandler: React.MouseEventHandler<HTMLDivElement>,
+    addTicketsHandler: React.MouseEventHandler<HTMLDivElement>,
+    ticketsCount: number
+};
+
+export default function Counter(props: CounterPropsTypes) {
     return (
         <div className={styles.counter}>
             <div className={styles.ticketsCounter}>

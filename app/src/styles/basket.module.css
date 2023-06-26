@@ -21,3 +21,9 @@
     background-color: var(--second-bg-color);
     border-radius: 8px;
 }
+
+.noTickets {
+    display: flex;
+    justify-content: center;
+    font-size: 32px;
+}

@@ -1,8 +1,7 @@
 import Portal from "./portal";
 import styles from "../styles/dropDown.module.css";
 
-const DropDown = ({ children, isOpen, id }) => {
-    console.log(isOpen)
+const DropDown = ({ children, isOpen, id }: { children: React.ReactNode, isOpen: boolean, id: string }) => {
     if (isOpen) {
         return (
             <Portal isModal={false} id={id}>

@@ -1,11 +1,11 @@
-import Image from 'next/image';
-import { useEffect, useState } from 'react';
-import { RootState } from '@/redux/store';
-import { useAppDispatch } from '@/hooks/useDispatch';
-import { useAppSelector } from '@/hooks/useSelector';
-import { setCinemas, setMovies } from '@/redux/films-page/filmsSlice';
-import FilmsContent from '../../src/components/filmsContent';
-import styles from './page.module.css';
+import { useEffect } from "react";
+import Image from "next/image";
+import { RootState } from "@/redux/store";
+import { useAppDispatch } from "@/hooks/useDispatch";
+import { useAppSelector } from "@/hooks/useSelector";
+import { setCinemas, setMovies } from "@/redux/films-page/filmsSlice";
+import FilmsContent from "../../src/components/filmsContent";
+import styles from "./page.module.css";
 import spinner from "../../src/assets/images/spinner.png";
 
 export default function Home() {
@@ -25,8 +25,8 @@ export default function Home() {
       let data = res.json();
       data.then((value) => {
         let cinemas = Object.values(value);
-        console.log(cinemas);
         dispatch(setCinemas(cinemas));
+        console.log(cinemas)
       })
     });
   }, [])

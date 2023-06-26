@@ -20,3 +20,9 @@
 .content img {
     border-radius: 8px;
 }
+
+.noResults {
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 32px;
+}

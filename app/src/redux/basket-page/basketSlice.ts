@@ -1,5 +1,5 @@
-import { PayloadAction, createSlice } from '@reduxjs/toolkit';
-import { Basket, BasketState } from '../../../types';
+import { PayloadAction, createSlice } from "@reduxjs/toolkit";
+import { Basket, BasketState } from "../../../types";
 
 const initialState: BasketState = {
     basket: [],
@@ -16,7 +16,7 @@ const basketSlice = createSlice({
         decrement(state) {
             state.ticketsCount--;
         },
-        addTicket(state, action: PayloadAction<Basket>) {
+        addTicket(state, action) {
             if (state.basket.length) {
                 let check = state.basket.find(t => t.id === action.payload.id ? true : false);
                 if (check) {

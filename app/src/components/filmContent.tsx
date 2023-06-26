@@ -1,3 +1,5 @@
+'use client';
+
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import { RootState } from "@/redux/store";
@@ -10,12 +12,25 @@ import Counter from "./counter";
 import styles from "../styles/filmContent.module.css";
 import noPhoto from "../assets/images/noPhoto.png";
 import spinner from "../assets/images/spinner.png";
+import { CommentType, MovieType } from "../../types";
 
-export default function FilmContent(props) {
-    const [movieData, setMovieData] = useState(0);
-    const [comments, setComments] = useState();
+interface FilmContentPropsTypes {
+    id: string | undefined | string[];
+};
+
+export default function FilmContent(props: FilmContentPropsTypes) {
+    const [movieData, setMovieData] = useState<MovieType>();
+    const [comments, setComments] = useState<Array<CommentType>>();
     const dispatch = useAppDispatch();
     const ticketsCount = useAppSelector((state: RootState) => state.basketPage.ticketsCount);
+
+    const posterLoader = () => {
+        if (movieData) {
+            return movieData.posterUrl;
+        } else {
+            return "";
+        }
+    };
 
     useEffect(() => {
         fetch(`http://localhost:3001/api/movie?movieId=${props.id}`).then((data) => data.json()).then((data) => {
@@ -23,36 +38,41 @@ export default function FilmContent(props) {
         })
         fetch(`http://localhost:3001/api/reviews?movieId=${props.id}`).then((data) => data.json()).then((data) => {
             setComments(data);
+            console.log(data)
         })
     }, [])
 
     const removeTicketsHandler = () => {
         if (ticketsCount > 0) {
             dispatch(decrement());
-            dispatch(removeTicket({
-                id: props.id,
-                name: movieData.title,
-                genre: movieData.genre,
-                poster: movieData.posterUrl,
-                tickets: 1
-            }));
+            if (movieData) {
+                dispatch(removeTicket({
+                    id: props.id,
+                    name: movieData.title,
+                    genre: movieData.genre,
+                    poster: movieData.posterUrl,
+                    tickets: 1
+                }));
+            }
         };
     };
 
     const addTicketsHandler = () => {
         if (ticketsCount < 30) {
             dispatch(increment());
-            dispatch(addTicket({
-                id: props.id,
-                name: movieData.title,
-                genre: movieData.genre,
-                poster: movieData.posterUrl,
-                tickets: 1
-            }));
+            if (movieData) {
+                dispatch(addTicket({
+                    id: props.id,
+                    name: movieData.title,
+                    genre: movieData.genre,
+                    poster: movieData.posterUrl,
+                    tickets: 1
+                }));
+            }
         };
     };
 
-    if (movieData === 0) {
+    if (!movieData) {
         return <div className={styles.spinner}>
             <Image src={spinner} width={200} height={200} alt="spinner" />
         </div>
@@ -61,10 +81,7 @@ export default function FilmContent(props) {
         <div className={styles.filmContent}>
             <div className={styles.filmInfo}>
                 <div className={styles.poster}>
-                    <img src={movieData.posterUrl}
-                        width="400px"
-                        height="500px"
-                        alt={`poster for film ${movieData.title}`} />
+                    <Image loader={posterLoader} src="poster.png" width={400} height={500} alt={`poster for film ${movieData.title}`} />
                 </div>
                 <div className={styles.info}>
                     <div className={styles.title}>
@@ -84,7 +101,7 @@ export default function FilmContent(props) {
                 </div>
             </div>
             <div className={styles.comments}>
-                {comments?.map(c => <Comment
+                {comments && comments.map((c: CommentType) => <Comment
                     userPhoto={noPhoto}
                     userName={c.name}
                     userComment={c.text}

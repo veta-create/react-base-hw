@@ -11,6 +11,7 @@ import DropDown from "@/components/dropDown";
 import styles from "../styles/filter.module.css";
 import arrowOpen from "../assets/images/arrow-open-min.svg";
 import arrowClose from "../assets/images/arrow-close-min.svg";
+import { CinemaType } from "../../types";
 
 export default function Filter() {
     const dispatch = useAppDispatch();
@@ -130,8 +131,8 @@ export default function Filter() {
                         }}>
                             Не выбрано
                         </li>
-                        {cinemas.map(c => <li onClick={() => {
-                            onChangeCinemaFilter(c.name, c.movieIds)
+                        {cinemas.map((c: CinemaType) => <li onClick={() => {
+                            onChangeCinemaFilter(c.name, c.moviesIds)
                         }}>{c.name}</li>)}
                     </DropDown>
                 </div>

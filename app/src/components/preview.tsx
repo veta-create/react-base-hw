@@ -24,6 +24,11 @@ export default function Preview(props: PreviewPropsTypes) {
     const [modalIsOpen, setModalIsOpen] = useState(false);
     const basket = useAppSelector((state: RootState) => state.basketPage.basket);
 
+    const posterLoader = () => {
+        return props.imageSrc;
+    };
+
+
     const removeTicketsHandler = (isBasket: boolean) => {
         let currentTickets = basket.find(t => t.id === props.id)?.tickets;
         if (currentTickets === 1 && isBasket) {
@@ -69,7 +74,7 @@ export default function Preview(props: PreviewPropsTypes) {
         return (
             <div className={styles.previewTicket}>
                 <div className={styles.poster}>
-                    <img width="100px" height="120px" src={props.imageSrc} alt={`Prewiew for film ${props.filmName}`} />
+                    <Image loader={posterLoader} src="preview.png" width={100} height={120} alt={`Prewiew for film ${props.filmName}`} />
                 </div>
                 <div className={styles.description}>
                     <Link href={`/films/film/${props.id}`}><p className={styles.name}>{props.filmName}</p></Link>
@@ -93,7 +98,7 @@ export default function Preview(props: PreviewPropsTypes) {
         return (
             <div className={styles.preview}>
                 <div className={styles.poster}>
-                    <img width="100px" height="120px" src={props.imageSrc} alt={`Prewiew for film ${props.filmName}`} />
+                    <Image loader={posterLoader} src="preview.png" width={100} height={120} alt={`Prewiew for film ${props.filmName}`} />
                 </div>
                 <div className={styles.description}>
                     <Link href={`/films/film/${props.id}`}><p className={styles.name}>{props.filmName}</p></Link>

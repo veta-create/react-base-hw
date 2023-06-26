@@ -1,7 +1,14 @@
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 import styles from "../styles/comment.module.css";
 
-export default function Comment(props) {
+interface CommentPropsTypes {
+    userPhoto: StaticImageData,
+    userName: string,
+    userRating: number,
+    userComment: string
+};
+
+export default function Comment(props: CommentPropsTypes) {
     return (
         <div className={styles.userComment}>
             <div className={styles.userPhoto}>

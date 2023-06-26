@@ -4,7 +4,9 @@ import styles from "../styles/QA.module.css";
 import open from "../assets/images/arrow-open.svg";
 import close from "../assets/images/arrow-close.svg";
 
-const MenuContext = React.createContext(false);
+type MenuContextType = { activeGroup: string | undefined, switchGroup: (title: undefined) => void } | boolean;
+
+const MenuContext = React.createContext<MenuContextType>(false);
 
 const MenuAccordion = ({ children }: { children: React.ReactNode }) => {
     const [activeGroup, setActiveGroup] = useState();
@@ -15,8 +17,8 @@ const MenuAccordion = ({ children }: { children: React.ReactNode }) => {
     return <MenuContext.Provider value={{ activeGroup, switchGroup }}>{children}</MenuContext.Provider>;
 };
 
-MenuAccordion.Group = function MenuGroup({ children, title }) {
-    const { activeGroup, switchGroup } = useContext(MenuContext);
+MenuAccordion.Group = function MenuGroup({ children, title }: { children: React.ReactNode, title: string }) {
+    const { activeGroup, switchGroup }: any = useContext(MenuContext);
     return <div className={styles.item}>
         <div className={styles.title}>
             <div>{title}</div>
@@ -43,7 +45,7 @@ MenuAccordion.Group = function MenuGroup({ children, title }) {
     </div>;
 };
 
-MenuAccordion.Item = function MenuItem({ children, title, isTitle }: { children: { title: string; isTitle: boolean; }, title: string; isTitle: boolean; }) {
+MenuAccordion.Item = function MenuItem({ children, title, isTitle }: { children?: React.ReactNode, title: string; isTitle: boolean; }) {
     return <div className={isTitle ? styles.mainTitle : styles.text}>{title}</div>;
 };
 

@@ -1,6 +1,7 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice } from "@reduxjs/toolkit";
+import { FilmsState } from "../../../types";
 
-const initialState = {
+const initialState: FilmsState = {
     allMovies: [],
     cinemas: []
 };
@@ -13,7 +14,7 @@ const filmsSlice = createSlice({
             state.allMovies = action.payload;
         },
         setCinemas(state, action) {
-            state.cinemas = [...action.payload];
+            state.cinemas = action.payload;
         }
     }
 });

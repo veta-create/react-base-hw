@@ -9,6 +9,7 @@ export default function Basket() {
   return (
     <div className={styles.basket}>
       <div className={styles.tickets}>
+        {tickets.length === 0 && <div className={styles.noTickets}>Пусто...</div>}
         {tickets.map(t => <Preview
           key={t.id}
           id={t.id}

@@ -1,5 +1,5 @@
 export const genreCracker = (genre: string | undefined) => {
-    switch(genre) {
+    switch (genre) {
         case "fantasy":
             return "Фэнтези"
         case "horror":
@@ -8,5 +8,7 @@ export const genreCracker = (genre: string | undefined) => {
             return "Боевик"
         case "comedy":
             return "Комедия"
+        default:
+            return "";
     };
 };

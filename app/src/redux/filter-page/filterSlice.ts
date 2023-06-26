@@ -1,6 +1,7 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice } from "@reduxjs/toolkit";
+import { FilterState } from "../../../types";
 
-const initialState = {
+const initialState: FilterState = {
     nameFilter: "",
     genreFilter: "Выберите жанр",
     cinemaFilter: { name: "Выберите кинотеатр", movies: [] }

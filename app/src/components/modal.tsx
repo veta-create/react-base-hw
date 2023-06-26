@@ -1,10 +1,19 @@
+import React from "react";
 import Image from "next/image";
-import PropTypes from "prop-types";
 import Portal from "./portal";
 import styles from "../styles/modal.module.css";
 import cancel from "../assets/images/cancel.svg";
 
-const Modal = (props) => {
+
+interface ModalPropsTypes {
+    isOpen: boolean,
+    title: string,
+    onSubmit: React.MouseEventHandler<HTMLButtonElement>,
+    onCancel: React.MouseEventHandler<HTMLElement>;
+};
+
+
+const Modal = (props: ModalPropsTypes) => {
     if (props.isOpen) {
         return (
             <Portal isModal={true}>
@@ -28,20 +37,6 @@ const Modal = (props) => {
             </Portal>
         )
     }
-}
-
-Modal.propTypes = {
-    title: PropTypes.string,
-    isOpen: PropTypes.bool,
-    onCancel: PropTypes.func,
-    onSubmit: PropTypes.func
-};
-
-Modal.defaultProps = {
-    title: "Modal",
-    isOpen: false,
-    onCancel: () => { },
-    onSubmit: () => { }
 }
 
 export default Modal;
