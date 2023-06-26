@@ -38,5 +38,3 @@ export interface CinemaType {
     name: string,
     moviesIds: [] | null;
 };
-
-export type Basket = { id: string, name: string, genre: string, poster: string, tickets: number };
